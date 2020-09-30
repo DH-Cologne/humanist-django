@@ -4,6 +4,8 @@ django-extensions
 django-libsass
 django-model-utils
 django-redis
+mail-parser == 3.12.0
+six == 1.14.0
 psycopg2-binary
 redis
 python-dateutil
