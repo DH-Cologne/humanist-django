@@ -4,6 +4,8 @@ from datetime import timedelta
 from django.utils import timezone
 import os.path
 import mailparser
+from datetime import datetime
+
 
 class Command(BaseCommand):
     help = 'Import getmail Mails into Database!'
@@ -15,17 +17,19 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         paths = options["import_path"]
 
-        mail_files = []
-        for path in paths: # TODO: only get files
-            files = os.listdir(path)
-            for file in files:
-                mail_files.append(path + file)
+        mail_files = set()
 
-        print(mail_files)
+        for path in paths:
+            for root, directories, filenames in os.walk(path):
+                for filename in filenames:
+                    if filename.endswith('.used'):
+                        continue
+                    mail_files.add(os.path.join(root, filename))
+
+        print("Processing {} new mails".format(len(mail_files)))
         for file in mail_files:
             parsed = mailparser.parse_from_file(file)
             mail = IncomingEmail()
-            mail.body = parsed.body
 
             full_text_body = ""
             for part in parsed.text_plain:
@@ -37,8 +41,7 @@ class Command(BaseCommand):
                 full_text_html += part
             mail.body_html = full_text_html.strip()
 
-            # TODO: check date error
-            mail.date = parsed.date
+            mail.date = datetime.fromisoformat(str(parsed.date))
             mail.raw = parsed.body
 
             senders = []
@@ -52,3 +55,4 @@ class Command(BaseCommand):
             mail.processed = False
 
             mail.save()
+            os.rename(file, "{}.used".format(file))
