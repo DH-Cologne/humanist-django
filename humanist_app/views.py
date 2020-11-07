@@ -326,10 +326,16 @@ class EditorEditionPreviewView(View):
                     subject = '[Humanist] {}.{}: {}'.format(
                         edition.volume, edition.issue, edition.subject)
 
-                    email = ActiveUserEmail()
-                    email.subject = subject
-                    email.body = body
-                    email.send()
+                    # All active users with digest turned off
+                    recipients = Subscriber.objects.filter(
+                        user__is_active=True).filter(
+                        digest=False)
+
+                    for sub in recipients:
+                        email = UserEmail(sub.user)
+                        email.subject = subject
+                        email.body = body
+                        email.send()
 
                     edition.sent = True
                     edition.date_sent = datetime.now()
