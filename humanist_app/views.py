@@ -636,14 +636,27 @@ class EditorUsersUnapprovedView(View):
         user = User.objects.get(pk=request.POST['id'])
         action = request.POST['action']
 
+        result = ""
+
         if action == "Approve":
             user.is_active = True
             user.save()
             context['success'] = "Approved: {}".format(user.email)
+            result = "approved"
 
         elif action == "Reject":
             user.delete()
             context['success'] = "Rejected: {}".format(user.email)
+            result = "rejected"
+
+        email = UserEmail(user)
+        email.subject = "[Humanist] Registration"
+        email.body = (
+            "Dear {0},\n\n"
+            "We have processed your Humanist registration request. "
+            "Your registration has been {1}."
+            "Kind Regards,\n Humanist").format(user.first_name, result)
+        email.send()
 
         unapproved_users = Subscriber.objects.filter(user__is_active=False)
         context['users'] = unapproved_users
