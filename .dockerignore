@@ -1,0 +1,5 @@
+venv
+logs
+.vagrant_provisioning
+postgres-data
+Dockerfile
