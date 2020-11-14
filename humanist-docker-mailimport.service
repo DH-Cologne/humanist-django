@@ -1,0 +1,16 @@
+[Unit]
+Description=Run the humanist django import script
+After=network.target
+Wants=network-online.target
+
+[Service]
+#User=humanist
+WorkingDirectory=/home/humanist/humanist-django
+#Restart=always
+Type=simple
+#ExecStart=/bin/bash /opt/humanist/webroot/getmail_and_import.sh
+#Environment=
+ExecStart=/usr/bin/docker-compose exec -T web /humanist/import_mails.sh
+
+[Install]
+WantedBy=multi-user.target
