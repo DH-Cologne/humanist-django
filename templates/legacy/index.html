@@ -4,6 +4,7 @@
 <head>
 	<title>Humanist Discussion Group</title>
 	<link rel="author" href="mailto:Willard.McCarty@kcl.ac.uk">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	{% include 'legacy/base_style.html' %}
 	<style type="text/css">
@@ -12,6 +13,7 @@
 		}
 
 		table.archive {
+			width: 100%;
 			border-spacing: 0.2rem;
 			font-size: 1rem;
 		}
@@ -37,6 +39,14 @@
 
 		hr {
 			width: 20%;
+		}
+
+		div.archive-container {
+			width: min(100%, 100ch);
+		}
+
+		div.archive-container h3 {
+			text-align: center;
 		}
 	</style>
 	{% include 'legacy/navigation_style.html' %}
@@ -70,114 +80,36 @@
 		The Archives, below, are open to everyone. Participation, however, requires that you apply for membership. Click ‘Subscribe’ above if you wish to do so. Submissions to Humanist are moderated and published to all members daily.
 	</p>
 
-	<header>
-		<h3>Archives (1987-2018)</h3>
-	</header>
+	<div class="archive-container original-archive">
+		<h3>Archives (1987-2020)</h3>
 
-	<table class="archive">
-		<tr>
-			<td>
-				<a href="/Archives/Virginia/v01/">Volume 1<br> 5/87-5/88</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v02/subject.html">Volume 2<br>5/88-5/89</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v03/subject.html">Volume 3<br>5/89-5/90</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v04/subject.html">Volume 4<br>5/90-5/91</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v05/subject.html">Volume 5<br>5/91-5/92</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v06/subject.html">Volume 6<br>5/92-5/93</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v07/subject.html">Volume 7<br>5/93-5/94</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v08/subject.html">Volume 8<br>5/94-5/95</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v09/subject.html">Volume 9<br>5/95-5/96</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v10/subject.html">Volume 10<br>5/96-5/97</a>
-			</td>
-		</tr>
+		<p>
+			The Humanist Discussion Group Archive from 1987 up to 2020 is currently maintained and hosted at <a href="https://humanist.kdl.kcl.ac.uk/" title="Original Humanist Discussion Group" target="_blank" rel="noopener">King's Digital Lab</a>.
+		</p>
 
-		<tr>
-			<td>
-				<a href="/Archives/Virginia/v11/subject.html">Volume 11<br>5/97-5/98</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v12/subject.html">Volume 12<br>5/98-5/99</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v13/subject.html">Volume 13<br>5/99-5/00</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v14/subject.html">Volume 14<br>5/00-5/01</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v15/subject.html">Volume 15<br>5/01-5/02</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v16/subject.html">Volume 16<br>5/02-5/03</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v17/subject.html">Volume 17<br>5/03-5/04</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v18/subject.html">Volume 18<br>5/04-5/05</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v19/subject.html">Volume 19<br>5/05-5/06</a>
-			</td>
-			<td>
-				<a href="/Archives/Virginia/v20/subject.html">Volume 20<br>5/06-5/07</a>
-			</td>
-		</tr>
+		<p>
+			A new integrated archive system will be made available in 2021.
+		</p>
+	</div>
 
-		<tr>
-			<td>
-				<a href="/Archives/Virginia/v21/subject.html">Volume 21<br>5/07-2/08</a>
-			</td>
-			<td>
-				<a href="/Archives/Current/Humanist.vol22.txt">Volume 22<br>5/08--</a>
-			</td>
-			<td colspan="2">
-				<a href="text.html">Plain text files, 5/87-2/08</a>
-			</td>
-			<td colspan="2">
-				<a href="http://lists.digitalhumanities.org/pipermail/humanist/">10/08 - 18<br>Mailman Archive</a>
-			</td>
-			<td colspan="2">
-				<a href="#">2/08 - present<br>ArchTracker Display</a>
-			</td>
-			<td colspan="2">
-				<a href="/Archives/Current/">7/08 - 18<br>Plain Text Files</a>
-			</td>
-		</tr>
-	</table>
+	<div class="archive-container new-archive">
+		<h3>Archives (2020-present)</h3>
 
-	<header><h3>Archives (2018-present)</h3></header>
-	<table class="archive">
-		<tr>
-		{% for volume in volumes %}
-			<td>
-				<a href="/volume/{{volume}}/">Volume {{volume}}</a>
-			</td>
-			{# if the the forloop counter is divisible by 4, close the li tag and open a new one #}
-			{% if forloop.counter|divisibleby:4 and not forloop.last %}
-			</tr>
+		<table class="archive">
 			<tr>
-			{% endif %}
-		{% endfor %}
-		</tr>
-	</table>
+			{% for volume in volumes %}
+				<td>
+					<a href="/volume/{{volume}}/">Volume {{volume}}</a>
+				</td>
+				{# if the the forloop counter is divisible by 4, close the li tag and open a new one #}
+				{% if forloop.counter|divisibleby:4 and not forloop.last %}
+				</tr>
+				<tr>
+				{% endif %}
+			{% endfor %}
+			</tr>
+		</table>
+	</div>
 
 	<p>
 		<strong>Editor</strong>: <a href="http://www.mccarty.org.uk">Willard McCarty (King’s College London, U.K.)</a>
