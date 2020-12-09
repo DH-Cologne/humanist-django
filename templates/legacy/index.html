@@ -1,118 +1,193 @@
-{% load staticfiles %} 
-<html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Humanist Discussion Group</title>
-<link rev="made" href="mailto:Willard.McCarty@kcl.ac.uk">
+	<title>Humanist Discussion Group</title>
+	<link rel="author" href="mailto:Willard.McCarty@kcl.ac.uk">
+
+	{% include 'legacy/base_style.html' %}
+	<style type="text/css">
+		table.archive, table.archive td {
+			border: 0.01rem inset #555;
+		}
+
+		table.archive {
+			border-spacing: 0.2rem;
+			font-size: 1rem;
+		}
+
+		table.archive td {
+			padding: 0.2rem;
+			text-align: center;
+		}
+
+		img {
+			margin: 1rem;
+		}
+
+		p.quote {
+			/* Palatino based font stack */
+			font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+			font-size: 0.9rem;
+		}
+
+		span.attribution {
+			font-size: 0.75rem;
+		}
+
+		hr {
+			width: 20%;
+		}
+	</style>
+	{% include 'legacy/navigation_style.html' %}
 </head>
-<body background="{% static 'images/strip.gif' %}">
-<center>
-<table border cellpadding=5>
-<td align=center><A HREF="/" border=off><B>Home</B></A></td>
-<td align=center><A HREF="/announcement.html" border=off><B>About</B></A></td> 
-<td align=center> <A
-HREF="/membership_form.php"><B>Subscribe</B></A></td> 
-<td align=center><a href="/search.html"><B>Search</B></a></td>
-<td align=center> <A HREF="/Restricted/"><B>Member Area</B></A></td>
-</table>
-</center>
-<br>
+<body>
+	{% include 'legacy/navigation.html' %}
 
-<center><a href="quack.html"><img src="{% static 'images/humanist.gif' %}" alt="Humanist Discussion Group" border=off></a></center><br><br>
-<center></center>
+	<a href="quack.html">
+		<img src="{% static 'images/humanist.gif' %}" alt="Humanist Discussion Group">
+	</a>
 
-<blockquote><blockquote>
+	<p class="quote">
+		«[T]ruth is not born nor is it to be found inside the head of an individual person, it is born between people collectively searching for the truth, in the process of their dialogic interaction.... »
+		<br>
+		<span class="attribution">(Mikhail Bakhtin, Problems of Dostoevsky's Poetics, trans. Caryl Emerson)</span>
+	</p>
 
-<p>&laquo;[T]ruth is not born nor is it to be found inside the head of an individual person, it is born <em>between people</em> collectively searching for the truth, in the process of their dialogic interaction.... &raquo; <font size=-1>Mikhail Bakhtin, <em>Problems of Dostoevsky's Poetics</em>, trans. Caryl Emerson (University of Minnesota Press, 1984, pp. 110.</font>
+	<p class="quote">
+		«We say that we ‘conduct’ a conversation, but the more genuine a conversation is, the less its conduct lies within the will of either partner. Thus a genuine conversation is never the one that we wanted to conduct. Rather, it is generally more correct to say that we fall into conversation, or even that we become involved in it. The way one word follows another, with the conversation taking its own twists and reaching its own conclusion, may well be conducted in some way, but the partners conversing are far less the leaders of it than the led. No one knows in advance what will "come out" of a conversation... it allows something to ‘emerge’ which henceforth exists.»
+		<br>
+		<span class="attribution">(Hans-Georg Gadamer, Truth and Method, trans. Joel Weinsheimer and Donald Marshall)</span>
+	</p>
 
-<br><br>
+	<hr>
 
-"We" philosophers are... distinguished ... by our ability to engage in continuous conversation, testing one another, discovering our hidden presuppositions, changing our minds because we have listened to the voices of our fellows. Lunatics also change their minds, but their minds change with the tides of the moon and not because they have listened, really listened, to their friends' questions and objections. Montaigne in his tower and Kierkegaard in his isolation are of that goodly listening company, despite their solitude. The inner voices that they heard were real enough, Montaigne remembering his friend Etienne de la Boetie, and Kierkegaard mocking Pastor Adler. <font size=-1>Amelie Oksenberg Rorty, <em>Experiments in Philosophic Genre: Descartes' "Meditations"</em>, <i>Critical Inquiry</i> 9.3 (1983): 562.</font>
+	<p>
+		Humanist is an ongoing scholarly seminar on the relation between digital computing and the human sciences. It was founded in 1987 by the current Editor to strengthen a small and scattered community of practitioners. It quickly grew beyond its original purpose into a structured conversational genre for academic research and exchange of information. This has remained its purpose throughout the last three decades. For more on Humanist, click on the ‘About’ link above.
+	</p>
 
-<br>
-</blockquote></blockquote>
+	<p>
+		The Archives, below, are open to everyone. Participation, however, requires that you apply for membership. Click ‘Subscribe’ above if you wish to do so. Submissions to Humanist are moderated and published to all members daily.
+	</p>
 
-<hr width=20%>
+	<header>
+		<h3>Archives (1987-2018)</h3>
+	</header>
 
+	<table class="archive">
+		<tr>
+			<td>
+				<a href="/Archives/Virginia/v01/">Volume 1<br> 5/87-5/88</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v02/subject.html">Volume 2<br>5/88-5/89</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v03/subject.html">Volume 3<br>5/89-5/90</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v04/subject.html">Volume 4<br>5/90-5/91</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v05/subject.html">Volume 5<br>5/91-5/92</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v06/subject.html">Volume 6<br>5/92-5/93</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v07/subject.html">Volume 7<br>5/93-5/94</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v08/subject.html">Volume 8<br>5/94-5/95</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v09/subject.html">Volume 9<br>5/95-5/96</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v10/subject.html">Volume 10<br>5/96-5/97</a>
+			</td>
+		</tr>
 
-<p>
-<font size=+1> <p><strong><i>Humanist</i></strong> is an international seminar on digital humanities founded in 1987. Its aim is to provide a forum for discussion of intellectual, scholarly, pedagogical, and social issues and for exchange of information among participants. <i>Humanist</i> is a <a href="//kcl.ac.uk">King's College London</a> publication allied with the Alliance of Digital Humanities Organizations (<a href="http://www.digitalhumanities.org/">ADHO</a>). To apply for membership, click on 'Subscribe', above.</p>
+		<tr>
+			<td>
+				<a href="/Archives/Virginia/v11/subject.html">Volume 11<br>5/97-5/98</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v12/subject.html">Volume 12<br>5/98-5/99</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v13/subject.html">Volume 13<br>5/99-5/00</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v14/subject.html">Volume 14<br>5/00-5/01</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v15/subject.html">Volume 15<br>5/01-5/02</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v16/subject.html">Volume 16<br>5/02-5/03</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v17/subject.html">Volume 17<br>5/03-5/04</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v18/subject.html">Volume 18<br>5/04-5/05</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v19/subject.html">Volume 19<br>5/05-5/06</a>
+			</td>
+			<td>
+				<a href="/Archives/Virginia/v20/subject.html">Volume 20<br>5/06-5/07</a>
+			</td>
+		</tr>
 
+		<tr>
+			<td>
+				<a href="/Archives/Virginia/v21/subject.html">Volume 21<br>5/07-2/08</a>
+			</td>
+			<td>
+				<a href="/Archives/Current/Humanist.vol22.txt">Volume 22<br>5/08--</a>
+			</td>
+			<td colspan="2">
+				<a href="text.html">Plain text files, 5/87-2/08</a>
+			</td>
+			<td colspan="2">
+				<a href="http://lists.digitalhumanities.org/pipermail/humanist/">10/08 - 18<br>Mailman Archive</a>
+			</td>
+			<td colspan="2">
+				<a href="#">2/08 - present<br>ArchTracker Display</a>
+			</td>
+			<td colspan="2">
+				<a href="/Archives/Current/">7/08 - 18<br>Plain Text Files</a>
+			</td>
+		</tr>
+	</table>
 
-<font size><br>
-<center>
-<header><h3>Archives (1987-2018)</h3></header>
-<table border=1 cellspacing=5 cellpadding=5>
-<tr>
-<td><a href="/Archives/Virginia/v01/">Volume 1<br> 5/87-5/88</a></td>
-<td><a href="/Archives/Virginia/v02/subject.html">Volume 2<br>5/88-5/89</a></td>
-<td><a href="/Archives/Virginia/v03/subject.html">Volume 3<br>5/89-5/90</a></td>
-<td><a href="/Archives/Virginia/v04/subject.html">Volume 4<br>5/90-5/91</a></td>
-<td><a href="/Archives/Virginia/v05/subject.html">Volume 5<br>5/91-5/92</a></td>
-<td><a href="/Archives/Virginia/v06/subject.html">Volume 6<br>5/92-5/93</a></td>
-<td><a href="/Archives/Virginia/v07/subject.html">Volume 7<br>5/93-5/94</a></td>
-<td><a href="/Archives/Virginia/v08/subject.html">Volume 8<br>5/94-5/95</a></td>
-<td><a href="/Archives/Virginia/v09/subject.html">Volume 9<br>5/95-5/96</a></td>
-<td><a href="/Archives/Virginia/v10/subject.html">Volume 10<br>5/96-5/97</a></td>
-</tr>
+	<header><h3>Archives (2018-present)</h3></header>
+	<table class="archive">
+		<tr>
+		{% for volume in volumes %}
+			<td>
+				<a href="/volume/{{volume}}/">Volume {{volume}}</a>
+			</td>
+			{# if the the forloop counter is divisible by 4, close the li tag and open a new one #}
+			{% if forloop.counter|divisibleby:4 and not forloop.last %}
+			</tr>
+			<tr>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	</table>
 
-<tr>
-<td><a
-href="/Archives/Virginia/v11/subject.html">Volume 11<br>5/97-5/98</a></td>
-<td><a
-href="/Archives/Virginia/v12/subject.html">Volume 12<br>5/98-5/99</a></td>
-<td><a href="/Archives/Virginia/v13/subject.html">Volume 13<br>5/99-5/00</a></td>
-<td><a href="/Archives/Virginia/v14/subject.html">Volume 14<br>5/00-5/01</a></td>
-<td><a href="/Archives/Virginia/v15/subject.html">Volume 15<br>5/01-5/02</a></td>
-<td><a href="/Archives/Virginia/v16/subject.html">Volume 16<br>5/02-5/03</a></td>
-<td><a href="/Archives/Virginia/v17/subject.html">Volume 17<br>5/03-5/04</a></td>
-<td><a href="/Archives/Virginia/v18/subject.html">Volume 18<br>5/04-5/05</a></td>
-<td><a href="/Archives/Virginia/v19/subject.html">Volume 19<br>5/05-5/06</a></td>
-<td><a href="/Archives/Virginia/v20/subject.html">Volume 20<br>5/06-5/07</a></td>
-</tr>
+	<p>
+		<strong>Editor</strong>: <a href="http://www.mccarty.org.uk">Willard McCarty (King’s College London, U.K.)</a>
+		<br>
+		<b>Designed and developed at</b>: <a href="https://github.com/DH-Cologne/humanist-django">DH-Cologne</a>
+	</p>
 
-
-<tr>
-<td><a href="/Archives/Virginia/v21/subject.html">Volume 21<br>5/07-2/08</a></td>
-<td><a href="/Archives/Current/Humanist.vol22.txt">Volume 22<br>5/08--</a></td>
-<td colspan=2 align=center><a href="text.html">Plain text files, 5/87-2/08</a></td>
-<td colspan=2 align=center><a href="http://lists.digitalhumanities.org/pipermail/humanist/">10/08 - 18<br>Mailman Archive</td>
-<td colspan=2 align=center><a href="#">2/08 - present<br>ArchTracker Display</a></td>
-<td colspan=2 align=center><a href="/Archives/Current/">7/08 - 18<br>Plain Text Files</td>
-</tr>
-
-</table></center>
-
-<p>
-<center>
-<header><h3>Archives (2018-present)</h3></header>
-<table border=1 cellspacing=5 cellpadding=5>
-<tr>
-
-{% for volume in volumes %}
-    
-    <td><a href="/volume/{{volume}}/">Volume {{volume}}</a></td>
-
-    {# if the the forloop counter is divisible by 4, close the <li> tag and open a new one #}
-    {% if forloop.counter|divisibleby:4 and not forloop.last %}
-    </tr>
-    <tr>
-    {% endif %}
-
-    {% endfor %}
-
-</tr>
-
-</table></center>
-
-
-<br><br>
-<p><b>Editor</b>: <a href="http://www.mccarty.org.uk">Willard McCarty</a> (King's College London, U.K.; Western Sydney University, Australia) <br> 
-<b>Software designer</b>: <a href="http://www.mind-crafts.com/aboutus.html">Malgosia Askanas</a> (Mind-Crafts)</p>
-
-<p>This site is <a href="//kdl.kcl.ac.uk/how-we-work/kdl-designed-developed-and-maintained/">maintained</a> under a service level agreement by <a href="//kdl.kcl.ac.uk/">King's Digital Lab</a>.
-
-
+	<p>
+		This site is <a href="https://github.com/DH-Cologne/humanist-django">maintained</a> by the <a href="https://dh.phil-fak.uni-koeln.de/en/">Department of Digital Humanities</a>.
+	</p>
 </body>
-
 </html>
 

@@ -1,68 +1,106 @@
 {% load staticfiles %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>What is Humanist?</title>
-<link rev="made" href="http://www.princeton.edu/humanist/Willard.McCarty@kcl.ac.uk">
+	<title>What is Humanist?</title>
+	<link
+		rel="author"
+		href="http://www.princeton.edu/humanist/Willard.McCarty@kcl.ac.uk"
+	/>
+
+	{% include 'legacy/base_style.html' %}
+	<style type="text/css">
+		body {
+			background: #FFFFF0;
+		}
+
+		hr {
+			width: 100%;
+		}
+	</style>
+	{% include 'legacy/navigation_style.html' %}
 </head>
-<body bgcolor="#FFFFF0">
-<A HREF="index.php"><IMG SRC="{% static 'images/humsmall.gif' %}" ALT="Humanist's homepage" align="right"></A>
-<p><hr>
-<center><h1><i>Humanist</i>: an online seminar for the digital humanities</h1></center>
-<hr>
-<ul>
-<li><a href="#whatis">What is <i>Humanist</i>?</a>
-<li><a href="#history">A brief history</a>
-<li><a href="#whatis"><i>Humanist</i> now</a>
-<li><a href="#social">The social and institutional issues</a>
-<li><a href="#membership">Membership</a>
-<li><a href="#post">Posting messages</a>
-</ul>
+<body>
+	{% include 'legacy/navigation.html' %}
 
+	<hr>
 
-<h3 id="whatis">What is <i>Humanist</i>?</h3>
+	<h1>Humanist’s editorial intent</h1>
 
-<p><i>Humanist</i> is an international online seminar devoted to all aspects of the digital humanities. Members use it to exchange information among themselves, ask questions, make announcements, and volunteer information they think will be useful to others. Its primary goal is to provide a wide-ranging forum for discussion that will help advance our understanding of the field and will foster the development of a community out of the many individuals for whom computing is integral to the humanities.</p>
+	<hr>
 
-<h3 id="history">A brief history</h3>
+	<p>
+		The best way to understand what Humanist is about, what it is for, is to
+		subscribe and participate. Looking through the archives may help. But a
+		few words concerning what it does and how it goes about doing that will
+		fill in the gaps.
+	</p>
 
-<p><i>Humanist</i> began in May 1987 as a means of communication among a small group of people concerned with the support of what was then called "computing and the humanities". At the time e-mail was relatively new among humanists, the Web non-existent and mechanisms for discussion via e-mail ("lists") almost unknown. Humanist grew rapidly and, in response to the community it helped to discover, developed quickly into a international, interdisciplinary forum primarily distinguished by the quality of its discussion. From the example of Humanist, many if not most of the current online groups in the humanities were inspired.</p>
+	<p>
+		The subjects discussed on Humanist are determined entirely by its
+		membership within the broad interdisciplinary scope of computing in the
+		human sciences and, when needed, the sciences beyond them. Postings are
+		sent out unaltered except for grouping with others on the same topic and
+		the occasional reformatting to improve legibility. Although exchange of
+		information relevant to digital practices is a regular feature, the aim is
+		to do scholarly research by means of conversation, asking and responding
+		to questions, discussing problems, opening them up to new contexts.
+		Perhaps the best description is Nick Sousanis’ provisional definition of
+		‘unflattening’ in his book of that title: “a simultaneous engagement of
+		multiple vantage points from which to engender new ways of seeing" (2015:
+		32).
+	</p>
 
-<p>For details of the early history, see &quot;HUMANIST: Lessons from a Global Electronic Seminar&quot;, <i>Computers and the Humanities</i> 26 (1992): 205-222 [<a href="http://staff.cch.kcl.ac.uk/~wmccarty/essays/McCarty,%20Humanist.pdf">X</a>].</p>
+	<p>
+		Humanist has a very sparse de facto editorial policy that has remained
+		unchanged since 1987 but is spelled out here for the first time to avoid
+		any misunderstandings.
+	</p>
 
+	<p>
+		It is this: for practical reasons born of experience, the Editor reserves
+		the right to hold back a posting when it does not fit scholarly
+		discussion, is ad hominem or poses a Holmesian “clear and present danger”
+		of provoking heated exchange likely to overwhelm all else. When the Editor
+		intervenes in that way, the author is consulted immediately, but the
+		Editor's decision is final. It should be noted that such holding back has
+		in the history of Humanist been exceedingly rare thanks to the governing
+		communal spirit of this seminar.
+	</p>
 
-<h3 id="now"><i>Humanist</i> now</h3>
+	<p>
+		The one innovation since the move of Humanist to its present home in late
+		2020 is its Editorial Board. The purpose of this Board is to guide
+		Humanist’s growth and development and to signify the seriousness of its
+		playful intent as a form of scholarly publication. The following scholars
+		are currently serving as members:
+	</p>
 
-<p>The online world is now simply part of what most humanists in the developed world do, so much so that we may wonder if the digital humanities, like the state in Marxist theory, will soon wither away. The same question might be asked about <i>Humanist</i>, since the Web is now populated by many discussion groups and blogs that address the specialised needs of the non-technical disciplines, including their uses of computing. The continuing vigour and volume of discussion on <i>Humanist</i> would suggest, however, that no such withering away is likely. Looking at the subjects of discussion shows that although specialist concerns are now effectively pursued elsewhere, Humanist remains the forum within which the technology, informed by the concerns of humane learning, can be viewed from an interdisciplinary common ground. </p>
+	<ul>
+		<li>Katherine Bode (Australian National University)</li>
+		<li>Elisabeth Burr (Universität Leipzig)</li>
+		<li>
+			Dino Buzzetti (Fondazione Per Le Scienze Religiose Giovanni XXIII,
+			Bologna)
+		</li>
+		<li>Fabio Ciotti (Università degli Studi di Roma “Tor Vergata”)</li>
+		<li>Øyvind Eide (Universität Köln)</li>
+		<li>Crystal Hall (Bowdoin College, Maine)</li>
+		<li>David Hoover (New York University)</li>
+		<li>Inna Kizhner (Сибирский федеральный университет)</li>
+		<li>Jerome McGann (University of Virginia)</li>
+		<li>Jan Christoph Meister (em. Universität Hamburg)</li>
+		<li>Julia Nantke (Universität Hamburg)</li>
+		<li>Tito Orlandi (Università degli Studi di Roma “La Sapienza”)</li>
+		<li>Marianne Raboul (École Normale Supérieure de Lyon)</li>
+		<li>Glenn Roe (Université Sorbonne Paris; Oxford University)</li>
+		<li>Gabriele Šalčiūtė-Čivilienė (King’s College London)</li>
+		<li>Manfred Thaller (em. Universität Köln)</li>
+		<li>
+			Karina van Dalem-Oskam (Huygens Instituut voor Nederlandse Geschiedenis)
+		</li>
+	</ul>
 
-<p> The question, "What is <I>Humanist</I>?" really amounts to the apparently more difficult ones, "What are the <i>digital</i> humanities?" and "What is this interdisciplinary common ground where they meet?" Can we say about this common ground what Ole Johan Dahl said about computer science, that "One may wonder whether [it] is really a discipline of its own, or whether it is merely a set of loosely connected techniques drawn together from different sources" (in <i>Linguaggi nella societ&agrave; e nella tecnica</i>, Milano 1970, p. 371). If it is merely a rag-bag collection of techniques, then why spend precious resources, such as one's time, on it? If it is not, then what forms its core? </p>
-
-<p>Since about 1997 professional debate about the nature of humanities computing has taken shape on <i>Humanist</i>, in the pages of <i>Literary and Linguistic Computing</i> and other activities now gathered under the Alliance of Digital Humanities Organizations. The Editor has taken a prominent role in this debate; see his webpage for publications on the topic. This <a href="/humanist/MethodologicalCommons.JPG">diagram</a> may also help. See also the ALLC page on <A HREF="http://www.allc.org/content/pubs/imhc/imch.html">Institutional models</A> for the digital humanities.</p>
-
-<h3 id="social">The social and institutional issues</h3>
-
-<p>There are other (and, for some, more serious) questions that <i>Humanist</i> has to deal with. These arise out of the social and institutional setting in which it operates. </p>
-
-<p>As Stanley Katz pointed out in his keynote speech at the ACH/ALLC conference in Santa Barbara in 1995, computing is continuing to transform how we think about and organize learning. In consequence, we are beginning to see a shift in institutional structures.  At the same time, applications of the technology shed fresh light on ancient problems. The mechanical efficiency of computers is the advertised benefit, but the real revolution in thought has far more to do with the computer as cognitive model, especially in the context of humanistic studies, and genuinely new means of scholarly research, teaching, and publication. The effects of this model are ubiquitous and powerful but largely go unexamined, and imitation of older means still muddies the waters.  Our job in the academy is precisely to examine these effects, discover what is new about computing, and so both improve the model and refurbish our cultural heritage. The principal mandate this suggests for the new Humanist, then, is to put the job before the community most qualified to undertake it.</p>
-
-<p>High-level scholarly discussion of the digital humanities will address one aspect of a much broader need. We in the academy have not done a good job communicating our raison d�&ecirc;tre to the rest of the world, arguably because so many of us do not ourselves know what it is. Within the university, as outside it, fundamental questions are seldom asked, but our fault is more serious because asking such questions is our principal justification. The profound impact of computing on all aspects of modern life provides therefore a great opportunity to engage in a long-overdue re-examination of what universities do for the society of which they are a part. <i>Humanist</i> cannot take on the whole of this re-examination, of course, but it does have a role in it -- a potentially a crucial role.</p>
-
-<h3 id="membership">Membership</h3>
-
-<p>See the Subscribe button on the homepage. Subscription is by application, but no one with a genuine interest in the digital humanities is ever refused. A <a href="/humanist/McCarty__Report_on_Humanist_2008-abbreviated.pdf">Membership report</a> is available.</p>
-
-<h3 id="post">Posting messages</h3>
-
-<p>The normal e-mail address for posting messages to <i>Humanist</i> is humanist at lists dot digitalhumanities dot org. One-off messages from non-members who do not wish to join may be sent to the Editor.</p>
-
-
-<p>Willard McCarty<br>
-Editor, Humanist<br>
-May 2009<br>
-</p>
-<hr>
-[<A HREF="index.html">Humanist's homepage</a>]
-
-<p>This site is <a href="//kdl.kcl.ac.uk/how-we-work/kdl-designed-developed-and-maintained/">maintained</a> under a service level agreement by <a href="//kdl.kcl.ac.uk/">King's Digital Lab</a>.
-
+	<p>Enquiries are always welcome. Willard McCarty Editor December 2020</p>
 </body>
-
+</html>
