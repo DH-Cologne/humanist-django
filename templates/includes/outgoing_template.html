@@ -1,6 +1,6 @@
                   Humanist Discussion Group, Vol. {{ edition.volume }}, No. {{ edition.issue }}.
-            Department of Digital Humanities, King's College London
-                   Hosted by King's Digital Lab
+        Department of Digital Humanities, University of Cologne
+                   		Hosted by DH-Cologne
                        www.dhhumanist.org
                 Submit to: humanist@dhhumanist.org
 
@@ -18,7 +18,7 @@
 {% if email.message.attachments %}
 
 Attachments:
-{% for att in email.message.attachments %}{{ att.original_filename }}: https://dhhumanist.org{{ att.url }} 
+{% for att in email.message.attachments %}{{ att.original_filename }}: https://dhhumanist.org{{ att.url }}
 {% endfor %}
 {% endif %}
 {% endfor %}
