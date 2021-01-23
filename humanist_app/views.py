@@ -656,12 +656,12 @@ class EditorUsersUnapprovedView(View):
             result = "rejected"
 
         email = UserEmail(user)
-        email.subject = "[Humanist] Registration"
+        email.subject = "Humanist Registration"
         email.body = (
             "Dear {0},\n\n"
-            "We have processed your Humanist registration request. "
-            "Your registration has been {1}."
-            "Kind Regards,\n Humanist").format(user.first_name, result)
+            "We have processed your Humanist registration request.\n"
+            "Your registration has been {1}.\n\n"
+            "Kind Regards,\nHumanist").format(user.first_name, result)
         email.send()
 
         unapproved_users = Subscriber.objects.filter(user__is_active=False)
