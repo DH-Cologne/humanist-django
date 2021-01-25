@@ -1,98 +1,112 @@
 {% load static %}
 <html>
-<head>
-    <title>Humanist Member Login</title>
-    {% include 'legacy/base_style.html' %}
-    <style>
-    	body {
-    		/* Helvetica based font stack */
-    		font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    		background: white;
-    	}
+	<head>
+		<title>Humanist Member Login</title>
+		{% include 'legacy/base_style.html' %}
+		<style>
+			body {
+				/* Helvetica based font stack */
+				font-family: Frutiger, 'Frutiger Linotype', Univers, Calibri, 'Gill Sans', 'Gill Sans MT',
+					'Myriad Pro', Myriad, 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma,
+					Geneva, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				background: white;
+			}
 
-    	p.note {
-    		font-size: 0.9rem;
-    		font-weight: bold;
-    	}
+			p.note {
+				font-size: 0.9rem;
+				font-weight: bold;
+			}
 
-    	div.login-form {
-    		border: 0.01rem solid #99b3b4;
-    		padding: 1rem;
-    		color: #567475;
-    	}
+			div.login-form {
+				border: 0.01rem solid #99b3b4;
+				padding: 1rem;
+				color: #567475;
+			}
 
-    	div.input-container input {
-    		border: 0.01rem solid #99b3b4;
-    		width: 100%;
-    		background-color: #e4ebeb;
-    		line-height: 1.5;
-    	}
+			div.input-container input {
+				border: 0.01rem solid #99b3b4;
+				width: 100%;
+				background-color: #e4ebeb;
+				line-height: 1.5;
+			}
 
-    	input.submit-btn {
-    		border: 0.01rem solid #99b3b4;
-    		background-color: #e4ebeb;
-    		color: #567475;
-    		width: 100%;
-    		height: 1.5rem;
-    	}
+			input.submit-btn {
+				border: 0.01rem solid #99b3b4;
+				background-color: #e4ebeb;
+				color: #567475;
+				width: 100%;
+				height: 1.5rem;
+			}
 
-    	div.login-form input {
-    		margin-bottom: 0.75rem;
-    	}
+			div.login-form input {
+				margin-bottom: 0.75rem;
+			}
 
-    	div.login-form div.actions {
-    		text-align: center;
-    	}
+			div.login-form div.actions {
+				text-align: center;
+			}
 
-    	div.login-form form {
-    		margin: 0;
-    	}
-    </style>
-    {% include 'legacy/navigation_style.html' %}
-</head>
-<body>
-	{% include 'legacy/navigation.html' %}
+			div.login-form form {
+				margin: 0;
+			}
+		</style>
+		{% include 'legacy/navigation_style.html' %}
+	</head>
+	<body>
+		{% include 'legacy/navigation.html' %}
 
-	<p class="note">
-		Note: In order to log in, you must have cookies enabled in your browser.
-	</p>
-	<p class="note">
-		Note: If upon login you see a blank page,<br>quit the website completely, clear all cookies in your browser, and then try again.
-	</p>
+		<p class="note">Note: In order to log in, you must have cookies enabled in your browser.</p>
+		<p class="note">
+			Note: If upon login you see a blank page,<br />quit the website completely, clear all cookies
+			in your browser, and then try again.
+		</p>
 
-	{% if error %}
-	<div class="log">
-	  <p class="error">{{ error }}</p>
-	</div>
-	{% endif %}
+		{% if error %}
+		<div class="log">
+			<p class="error">{{ error }}</p>
+		</div>
+		{% endif %}
 
-	<div class="login-form">
-    <form class="form" action="" method="post">
-      {% csrf_token %}
-      <input type="hidden" name="_submit_check" value="1"/>
-      <input type="hidden" name="_count" value="0"/>
-      <input type="hidden" name="_goto" value="."/>
+		<div class="login-form">
+			<form class="form" action="" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="_submit_check" value="1" />
+				<input type="hidden" name="_count" value="0" />
+				<input type="hidden" name="_goto" value="." />
 
-      <div class="input-container">
-        <label for="username">LOGIN:</label>
-        <input class="input" type="text" name="username" id="username" size="40" maxlength="50" value="" />
-      </div>
-      <div class="input-container">
-    		<label for="password">PASSWORD:</label>
-        <input class="input" type="password" name="password" id="password" size="20" maxlength="100" />
-      </div>
+				<div class="input-container">
+					<label for="username">MAIL:</label>
+					<input
+						class="input"
+						type="text"
+						name="username"
+						id="username"
+						size="40"
+						maxlength="50"
+						value=""
+					/>
+				</div>
+				<div class="input-container">
+					<label for="password">PASSWORD:</label>
+					<input
+						class="input"
+						type="password"
+						name="password"
+						id="password"
+						size="20"
+						maxlength="100"
+					/>
+				</div>
 
-      <input type="submit" value="SUBMIT" class="submit-btn" />
+				<input type="submit" value="SUBMIT" class="submit-btn" />
 
-      <div class="actions">
-      	<a href="/membership_form.php">Subscribe</a> / <a href="/forgot_password.php">Forgot password?</a>
-      </div>
-    </form>
-	</div>
+				<div class="actions">
+					<a href="/membership_form.php">Subscribe</a> /
+					<a href="/forgot_password.php">Forgot password?</a>
+				</div>
+			</form>
+		</div>
 
-	<p>{% include 'includes/footer.html' %}</p>
-
-	{% include 'includes/privacy_policy.html' %}
-</body>
+		{% include 'includes/privacy_policy.html' %} {% include 'includes/footer.html' %}
+	</body>
 </html>
-
