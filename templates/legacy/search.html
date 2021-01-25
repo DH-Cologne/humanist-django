@@ -1,83 +1,71 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Humanist Discussion Group - Search</title>
-	<link re="author" href="mailto:Willard.McCarty@kcl.ac.uk">
+	<head>
+		<title>Humanist Discussion Group - Search</title>
+		<link re="author" href="mailto:Willard.McCarty@kcl.ac.uk" />
 
-	{% include 'legacy/base_style.html' %}
-	<style>
-		img {
-			margin: 1rem;
-		}
-	</style>
-	{% include 'legacy/navigation_style.html' %}
-</head>
-<body>
-	{% include 'legacy/navigation.html' %}
+		{% include 'legacy/base_style.html' %}
+		<style>
+			img {
+				margin: 1rem;
+			}
+		</style>
+		{% include 'legacy/navigation_style.html' %}
+	</head>
+	<body>
+		{% include 'legacy/navigation.html' %}
 
-	<a href="quack.html">
-		<img src="{% static 'images/humanist.gif' %}" alt="Humanist Discussion Group">
-	</a>
+		<header>
+			<a href="quack.html">
+				<img src="{% static 'images/humanist.gif' %}" alt="Humanist Discussion Group" />
+			</a>
 
-	<h1>Humanist Archives: Search</h1>
+			<h1>Humanist Archives: Search</h1>
+		</header>
 
-	<p>You can use this form to search the Humanist Archives. Please note that search results may be in differing formats, due to the varying mailing list software used throughout the years. Due to many of these results being text/html files, we do not display result snippets here.</p>
+		<main>
+			<p>
+				You can use this form to search the Humanist Archives. Please note that search results may
+				be in differing formats, due to the varying mailing list software used throughout the years.
+				Due to many of these results being text/html files, we do not display result snippets here.
+			</p>
 
-	<form action="" method="get">
-	  <strong>Query:</strong>
-	  <input type="text" name="q" size="80" {% if q %} value="{{q}}" {% endif %}  />
-	  <input type="submit" value="Search" />
-	</form>
+			<form action="" method="get">
+				<strong>Query:</strong>
+				<input type="text" name="q" size="80" {% if q %} value="{{q}}" {% endif %} />
+				<input type="submit" value="Search" />
+			</form>
 
-	{% if q %}
+			{% if q %}
 
-	<h3>Search Results for: {{q}} ({{ results_count }} found)</h3>
+			<h3>Search Results for: {{q}} ({{ results_count }} found)</h3>
 
-	{% if results.object_list %}
+			{% if results.object_list %} {% if results.has_previous %}
+			<a href="/search.html?q={{q}}">First</a>
+			<a href="/search.html?q={{q}}&page={{results.previous_page_number}}"> Previous </a>
+			{% endif %} Page {{ results.number}} of {{page_count }} {% if results.has_next %}
+			<a href="/search.html?q={{q}}&page={{results.next_page_number}}">Next</a>
+			<a href="/search.html?q={{q}}&page={{page_count}}">Last</a>
+			{% endif %}
 
-		{% if results.has_previous %}
-		  <a href="/search.html?q={{q}}">First</a>
-		  <a href="/search.html?q={{q}}&page={{results.previous_page_number}}">
-		  	Previous
-		  </a>
-		{% endif %}
+			<ul>
+				{% for result in results.object_list %}
+				<li><a href="{{ result.url }}">{{ result.title }}</a></li>
+				{% endfor%}
+			</ul>
 
-	  Page {{ results.number}} of {{page_count }}
-
-	  {% if results.has_next %}
-		  <a href="/search.html?q={{q}}&page={{results.next_page_number}}">Next</a>
-		  <a href="/search.html?q={{q}}&page={{page_count}}">Last</a>
-	  {% endif %}
-
-		<ul>
-	    {% for result in results.object_list %}
-	    	<li><a href="{{ result.url }}">{{ result.title }}</a></li>
-	    {% endfor%}
-		</ul>
-
-		{% if results.has_previous %}
-		  <a href="/search.html?q={{q}}">First</a>
-		  <a href="/search.html?q={{q}}&page={{results.previous_page_number}}">
-		  	Previous
-		  </a>
-		{% endif %}
-
-		Page {{ results.number}} of {{page_count }}
-
-		{% if results.has_next %}
-	    <a href="/search.html?q={{q}}&page={{results.next_page_number}}">Next</a>
-	    <a href="/search.html?q={{q}}&page={{page_count}}">Last</a>
-		{% endif %}
-
-		{% else %}
+			{% if results.has_previous %}
+			<a href="/search.html?q={{q}}">First</a>
+			<a href="/search.html?q={{q}}&page={{results.previous_page_number}}"> Previous </a>
+			{% endif %} Page {{ results.number}} of {{page_count }} {% if results.has_next %}
+			<a href="/search.html?q={{q}}&page={{results.next_page_number}}">Next</a>
+			<a href="/search.html?q={{q}}&page={{page_count}}">Last</a>
+			{% endif %} {% else %}
 			<b>No results found.</b>
-		{% endif %}
+			{% endif %} {% endif %}
+		</main>
 
-	{% endif %}
-
-	<p>{% include 'includes/footer.html' %}</p>
-
-</body>
+		{% include 'includes/footer.html' %}
+	</body>
 </html>
-

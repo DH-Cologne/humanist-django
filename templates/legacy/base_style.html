@@ -14,7 +14,29 @@
 		font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
 	}
 
-	p {
-		max-width: 140ch;
+	main {
+		width: min(140ch, 100vw);
+	}
+
+	footer, nav {
+		margin: 1rem 0;
+	}
+
+	/* Flexbox fitting */
+	@media screen {
+		body {
+			margin: 0;
+			min-height: 100vh;
+			justify-content: space-around;
+		}
+		main {
+			flex-grow: 10;
+		}
+	}
+
+	@media print {
+	   .noprint {
+	      visibility: hidden;
+	   }
 	}
 </style>

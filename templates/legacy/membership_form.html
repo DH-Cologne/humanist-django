@@ -1,141 +1,136 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Humanist Membership Application</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<title>Humanist Membership Application</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	{% include 'legacy/base_style.html' %}
-	<style>
-		table {
-			border-spacing: 0.2rem;
-			font-size: 1rem;
-		}
+		{% include 'legacy/base_style.html' %}
+		<style>
+			table {
+				border-spacing: 0.2rem;
+				font-size: 1rem;
+			}
 
-		td {
-			padding: 0.2rem;
-			text-align: left;
-		}
+			td {
+				padding: 0.2rem;
+				text-align: left;
+			}
 
-		td input {
-			width: 50%;
-		}
+			td input {
+				width: 50%;
+			}
 
-		.red {
-			color: red;
-		}
+			.red {
+				color: red;
+			}
 
-		hr {
-			width: 100%;
-		}
-	</style>
-	{% include 'legacy/navigation_style.html' %}
-</head>
-<body>
-	{% include 'legacy/navigation.html' %}
+			hr {
+				width: 100%;
+			}
+		</style>
+		{% include 'legacy/navigation_style.html' %}
+	</head>
+	<body>
+		{% include 'legacy/navigation.html' %}
 
-	<hr>
+		<header>
+			<h1>Humanist Membership Application</h1>
+		</header>
 
-	<h1>Humanist Membership Application</h1>
+		<main>
+			<p>
+				{%if success %}
+				<span>{{success}}</span>
 
-	<hr>
+				{% else %} {% if error %}
+				<span class="red">{{error}}</span>
+				{% endif %} Please fill out this form and submit it. The fields marked
+				<span class="red">*</span> are obligatory. {% endif %}
+			</p>
 
-	<p>
-		{%if success %}
-		<span>{{success}}</span>
+			<form action="" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="type" value="" />
+				<table>
+					<tr>
+						<td>
+							<b>First Name: <span class="red">*</span></b>
+						</td>
+						<td>
+							<input type="text" name="firstname" size="40" maxlength="80" value="{{firstname}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Last Name: <span class="red">*</span></b>
+						</td>
+						<td>
+							<input type="text" name="lastname" size="40" maxlength="80" value="{{lastname}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Middle Initial:</b>
+						</td>
+						<td>
+							<input type="text" name="middleinit" size="3" maxlength="3" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Email: <span class="red">*</span></b>
+						</td>
+						<td>
+							<input type="text" name="email" size="40" maxlength="50" value="{{email}}" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Desired Password: <span class="red">*</span></b>
+						</td>
+						<td>
+							<input type="password" name="password" size="20" maxlength="100" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Retype Password: <span class="red">*</span></b>
+						</td>
+						<td>
+							<input type="password" name="password2" size="20" maxlength="100" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>URL:</b>
+						</td>
+						<td>
+							<input type="text" name="url" size="80" maxlength="200" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>Short Bio: <span class="red">*</span></b>
+						</td>
+						<td>
+							<textarea name="bioblurb" rows="20" cols="80" wrap="hard">{{bioblurb}}</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>&nbsp;</b>
+						</td>
+						<td>
+							<input type="submit" value="SUBMIT FORM" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</main>
 
-		{% else %}
-			{% if error %}
-			<span class="red">{{error}}</span>
-			{% endif %}
+		{% include 'includes/privacy_policy.html' %}
 
-			Please fill out this form and submit it.   The fields marked <span class="red">*</span> are obligatory.
-		{% endif %}
-	</p>
-
-	<form action="" method="post">
-		{% csrf_token %}
-		<input type="hidden" name="type" value="">
-		<table>
-			<tr>
-				<td>
-					<b>First Name: <span class="red">*</span></b>
-				</td>
-				<td>
-					<input type="text" name="firstname" size="40" maxlength="80" value="{{firstname}}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Last Name: <span class="red">*</span></b>
-				</td>
-				<td>
-					<input type="text" name="lastname" size="40" maxlength="80" value="{{lastname}}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Middle Initial:</b>
-				</td>
-				<td>
-					<input type="text" name="middleinit" size="3" maxlength="3" value="">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Email: <span class="red">*</span></b>
-				</td>
-				<td>
-					<input type="text" name="email" size="40" maxlength="50" value="{{email}}">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Desired Password: <span class="red">*</span></b>
-				</td>
-				<td>
-					<input type="password" name="password" size="20" maxlength="100" value="">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Retype Password: <span class="red">*</span></b>
-				</td>
-				<td>
-					<input type="password" name="password2" size="20" maxlength="100" value="">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>URL:</b>
-				</td>
-				<td>
-					<input type="text" name="url" size="80" maxlength="200" value="">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Short Bio: <span class="red">*</span></b>
-				</td>
-				<td>
-					<textarea name="bioblurb" rows="20" cols="80" wrap="hard">{{bioblurb}}</textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>&nbsp;</b>
-				</td>
-				<td>
-					<input type="submit" value="SUBMIT FORM">
-				</td>
-			</tr>
-		</table>
-	</form>
-
-	<p>{% include 'includes/footer.html' %}</p>
-
-	{% include 'includes/privacy_policy.html' %}
-
-</body>
+		{% include 'includes/footer.html' %}
+	</body>
 </html>
-
