@@ -1,0 +1,16 @@
+[Unit]
+Description=Update humanist django search index
+After=network.target
+Wants=network-online.target
+
+[Service]
+#User=humanist
+WorkingDirectory=/home/humanist/humanist-django
+#Restart=always
+Type=simple
+#ExecStart=/bin/bash /opt/humanist/webroot/update_index.sh
+#Environment=
+ExecStart=/usr/bin/docker-compose exec -T web /humanist/update_index.sh
+
+[Install]
+WantedBy=multi-user.target

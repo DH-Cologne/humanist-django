@@ -17,6 +17,8 @@ DATABASES = {
 
 CACHES['default']['LOCATION'] = 'redis://cache:6379/humanist'
 
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://search:9200/'
+
 EMAIL_HOST = 'mailhost'
 
 if not 'BASE_URL' in environ:

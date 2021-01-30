@@ -1,0 +1,11 @@
+# Systemd Timer to be used for updating Django search index
+[Unit]
+Description=Update humanist django search index - Timer file
+
+[Timer]
+#OnBootSec=0min
+OnCalendar=*:0/5
+Unit=humanist-docker-updateindex.service
+
+[Install]
+WantedBy=basic.target

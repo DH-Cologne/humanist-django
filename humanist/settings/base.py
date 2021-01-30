@@ -170,7 +170,7 @@ LOGGING = {
 # Haystack.
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',  # noqa
+        'ENGINE': 'haystack.backends.elasticsearch5_backend.Elasticsearch5SearchEngine',  # noqa
         'URL': 'http://127.0.0.1:9200/',
         'INDEX_NAME': 'humanist',
     },
