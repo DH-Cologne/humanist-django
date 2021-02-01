@@ -52,7 +52,7 @@ class Command(BaseCommand):
             mail.subject = parsed.subject
             mail.used = False
             mail.deleted = False
-            mail.processed = False
+            mail.processed = True
 
             mail.save()
             os.rename(file, "{}.used".format(file))
