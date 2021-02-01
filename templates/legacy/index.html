@@ -5,51 +5,34 @@
 		<title>Humanist Discussion Group</title>
 		<link rel="author" href="mailto:Willard.McCarty@kcl.ac.uk" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		{% include 'legacy/base_style.html' %}
 		<style type="text/css">
 			table.archive,
 			table.archive td {
 				border: 0.01rem inset #555;
 			}
-
 			table.archive {
 				width: 100%;
 				border-spacing: 0.2rem;
 				font-size: 1rem;
 			}
-
 			table.archive td {
 				padding: 0.2rem;
 				text-align: center;
 			}
-
 			img {
 				margin: 1rem;
 			}
-
-			p.quote {
-				/* Palatino based font stack */
-				font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L', 'Book Antiqua',
-					Baskerville, 'Bookman Old Style', 'Bitstream Charter', 'Nimbus Roman No9 L', Garamond,
-					'Apple Garamond', 'ITC Garamond Narrow', 'New Century Schoolbook', 'Century Schoolbook',
-					'Century Schoolbook L', Georgia, serif;
-				font-size: 0.9rem;
-			}
-
 			span.attribution {
 				font-size: 0.75rem;
 			}
-
 			hr {
 				width: 20%;
 			}
-
 			div.archive-container {
 				width: min(100%, 100ch);
 				margin: 0 auto;
 			}
-
 			div.archive-container h3 {
 				text-align: center;
 			}
@@ -58,25 +41,22 @@
 	</head>
 	<body>
 		{% include 'legacy/navigation.html' %}
-
 		<header>
 			<a href="quack.html">
 				<img src="{% static 'images/humanist.gif' %}" alt="Humanist Discussion Group" />
 			</a>
 		</header>
-
-		<main>
-			<p class="quote">
+		<main class="single-spacing">
+			<p class="quote smaller-font palatino inset">
 				«[T]ruth is not born nor is it to be found inside the head of an individual person, it is
 				born between people collectively searching for the truth, in the process of their dialogic
 				interaction.... »
 				<br />
 				<span class="attribution"
-					>(Mikhail Bakhtin, Problems of Dostoevsky's Poetics, trans. Caryl Emerson)</span
+				>(Mikhail Bakhtin, Problems of Dostoevsky's Poetics, trans. Caryl Emerson)</span
 				>
 			</p>
-
-			<p class="quote">
+			<p class="quote smaller-font palatino inset">
 				«We say that we ‘conduct’ a conversation, but the more genuine a conversation is, the less
 				its conduct lies within the will of either partner. Thus a genuine conversation is never the
 				one that we wanted to conduct. Rather, it is generally more correct to say that we fall into
@@ -87,12 +67,10 @@
 				to ‘emerge’ which henceforth exists.»
 				<br />
 				<span class="attribution"
-					>(Hans-Georg Gadamer, Truth and Method, trans. Joel Weinsheimer and Donald Marshall)</span
+				>(Hans-Georg Gadamer, Truth and Method, trans. Joel Weinsheimer and Donald Marshall)</span
 				>
 			</p>
-
 			<hr />
-
 			<p>
 				Humanist is an ongoing scholarly seminar on the relation between digital computing and the
 				human sciences. It was founded in 1987 by the current Editor to strengthen a small and
@@ -101,16 +79,13 @@
 				remained its purpose throughout the last three decades. For more on Humanist, click on the
 				‘About’ link above.
 			</p>
-
 			<p>
 				The Archives, below, are open to everyone. Participation, however, requires that you apply
 				for membership. Click ‘Subscribe’ above if you wish to do so. Submissions to Humanist are
 				moderated and published to all members daily.
 			</p>
-
 			<div class="archive-container original-archive">
 				<h3>Archives (1987-2020)</h3>
-
 				<p>
 					The Humanist Discussion Group Archive from 1987 up to 2020 is currently maintained and
 					hosted at
@@ -119,32 +94,28 @@
 						title="Original Humanist Discussion Group"
 						target="_blank"
 						rel="noopener"
-						>King's Digital Lab</a
+					>King's Digital Lab</a
 					>.
 				</p>
-
 				<p>A new integrated archive system will be made available in 2021.</p>
 			</div>
-
 			<div class="archive-container new-archive">
 				<h3>Archives (2020-present)</h3>
-
 				<table class="archive">
 					<tr>
 						{% for volume in volumes %}
-						<td>
-							<a href="/volume/{{volume}}/">Volume {{volume}}</a>
-						</td>
-						{# if the the forloop counter is divisible by 4, close the li tag and open a new one #}
-						{% if forloop.counter|divisibleby:4 and not forloop.last %}
-					</tr>
-					<tr>
-						{% endif %} {% endfor %}
-					</tr>
-				</table>
-			</div>
-		</main>
-
-		{% include 'includes/footer.html' %}
-	</body>
-</html>
+							<td>
+								<a href="/volume/{{volume}}/">Volume {{volume}}</a>
+							</td>
+							{# if the the forloop counter is divisible by 4, close the li tag and open a new one #}
+							{% if forloop.counter|divisibleby:4 and not forloop.last %}
+							</tr>
+							<tr>
+							{% endif %} {% endfor %}
+						</tr>
+					</table>
+				</div>
+			</main>
+			{% include 'includes/footer.html' %}
+		</body>
+	</html>

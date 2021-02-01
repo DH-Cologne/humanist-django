@@ -5,29 +5,40 @@
 		line-height: 1.5;
 		text-align: justify;
 	}
-
 	body {
 		display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("{% static 'images/strip.gif' %}");
-    /* Times New Roman based font stack */
+		flex-direction: column;
+		align-items: center;
+		background-image: url("{% static 'images/strip.gif' %}");
+		/* Times New Roman based font stack */
 		font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
 	}
-
 	main {
 		width: min(120ch, 90vw);
 	}
-
 	footer, nav {
 		margin: 1rem 0;
 	}
-
 	header {
 		width: 100%;
 		text-align: center;
 	}
-
+	.single-spacing {
+		line-height: 1;
+	}
+	.inset {
+		margin-left: 5rem;
+		margin-right: 5rem;
+	}
+	.smaller-font {
+		font-size: 0.85rem;
+	}
+	.palatino {
+		font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L', 'Book Antiqua',
+					Baskerville, 'Bookman Old Style', 'Bitstream Charter', 'Nimbus Roman No9 L', Garamond,
+					'Apple Garamond', 'ITC Garamond Narrow', 'New Century Schoolbook', 'Century Schoolbook',
+					'Century Schoolbook L', Georgia, serif;
+	}
 	/* Flexbox fitting */
 	@media screen {
 		body {
@@ -39,10 +50,9 @@
 			flex-grow: 10;
 		}
 	}
-
 	@media print {
-	   .noprint {
-	      visibility: hidden;
-	   }
+		.noprint {
+			visibility: hidden;
+		}
 	}
 </style>
