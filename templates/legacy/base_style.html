@@ -1,9 +1,10 @@
 {% load staticfiles %}
 <style>
 	html {
-		font-size: 14pt;
+		font-size: 15pt;
+		font-size: clamp(13pt, min(2.5vh, 2.5vw), 15pt);
 		line-height: 1.5;
-		text-align: justify;
+		text-align: left;
 	}
 	body {
 		display: flex;
@@ -31,7 +32,7 @@
 		margin-right: 5rem;
 	}
 	.smaller-font {
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 	}
 	.palatino {
 		font-family: 'Palatino Linotype', Palatino, Palladio, 'URW Palladio L', 'Book Antiqua',
@@ -53,6 +54,15 @@
 	@media print {
 		.noprint {
 			visibility: hidden;
+		}
+	}
+	@media (max-width: 900px) {
+		.inset {
+			margin-left: 5vw;
+			margin-right: 5vw;
+		}
+		main {
+			width: 95vw;
 		}
 	}
 </style>
