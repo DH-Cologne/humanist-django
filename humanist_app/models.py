@@ -144,6 +144,8 @@ class Edition(models.Model):
 
         if cls.get_current_volume() == 32:
             return (editions_in_volume + 144)
+        elif cls.get_current_volume() == 34:
+            return (editions_in_volume + 230)
         else:
             return (editions_in_volume + 1)
 
