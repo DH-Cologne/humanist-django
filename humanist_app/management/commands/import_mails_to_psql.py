@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.utils import timezone
 import os.path
 import mailparser
+import email
 from datetime import datetime
 
 
@@ -13,6 +14,17 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         args = '<import_path import_path ...>'
         parser.add_argument('import_path', nargs='+', type=str)
+
+    def parse_mail(self, path):
+        encoding_modes = ["latin1", "utf8"]
+        for mode in encoding_modes:
+            try:
+                with open(path, "r", encoding=mode) as f:
+                    return mailparser.parse_from_file_obj(f)
+            except Exception as e:
+                print("Failed opening {} with mode {}".format(path, mode))
+                print(e)
+        return None
 
     def handle(self, *args, **options):
         paths = options["import_path"]
@@ -28,31 +40,30 @@ class Command(BaseCommand):
 
         print("Processing {} new mails".format(len(mail_files)))
         for file in mail_files:
-            parsed = mailparser.parse_from_file(file)
-            mail = IncomingEmail()
+            try:
+                parsed = self.parse_mail(file)
+                if not parsed:
+                    continue
+                mail = IncomingEmail()
 
-            full_text_body = ""
-            for part in parsed.text_plain:
-                full_text_body += part
-            mail.body = full_text_body.strip()
+                mail.body = "".join(parsed.text_plain).strip()
+                mail.body_html = "".join(parsed.text_html).strip()
 
-            full_text_html = ""
-            for part in parsed.text_html:
-                full_text_html += part
-            mail.body_html = full_text_html.strip()
+                mail.date = email.utils.parsedate_to_datetime(parsed.message.get('Date'))
+                mail.raw = parsed.body
 
-            mail.date = datetime.fromisoformat(str(parsed.date))
-            mail.raw = parsed.body
+                senders = []
+                for sender in parsed.from_:
+                    senders.append('{} <{}>'.format(sender[0], sender[1]))
+                mail.sender = ", ".join(senders)
 
-            senders = []
-            for sender in parsed.from_:
-                senders.append('{} <{}>'.format(sender[0], sender[1]))
-            mail.sender = ", ".join(senders)
+                mail.subject = parsed.subject
+                mail.used = False
+                mail.deleted = False
+                mail.processed = True
 
-            mail.subject = parsed.subject
-            mail.used = False
-            mail.deleted = False
-            mail.processed = True
-
-            mail.save()
-            os.rename(file, "{}.used".format(file))
+                mail.save()
+                os.rename(file, "{}.used".format(file))
+            except Exception as e:
+                print("Failed parsing {}".format(file))
+                print(e)
