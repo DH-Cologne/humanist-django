@@ -6,6 +6,7 @@ import os.path
 import mailparser
 import email
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 
 class Command(BaseCommand):
@@ -61,6 +62,11 @@ class Command(BaseCommand):
                 mail.used = False
                 mail.deleted = False
                 mail.processed = True
+
+                if len(mail.body) == 0:
+                    soup = BeautifulSoup(mail.body_html, features="html.parser")
+                    cleaned = "\n".join([text.strip() for text in soup.text.strip().split("\n")])
+                    mail.body = cleaned
 
                 mail.save()
                 os.rename(file, "{}.used".format(file))
