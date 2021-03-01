@@ -1,0 +1,12 @@
+[Unit]
+Description=Send Humanist Django mail digest every week
+After=network.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/home/humanist/humanist-django
+Type=simple
+ExecStart=/usr/bin/docker-compose exec -T web /humanist/send_digest.sh
+
+[Install]
+WantedBy=multi-user.target

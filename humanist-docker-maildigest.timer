@@ -1,0 +1,10 @@
+[Unit]
+Description=Send Humanist Django mail digest every week - timer
+
+[Timer]
+#OnBootSec=0min
+OnCalendar=Mon 01:00
+Unit=humanist-docker-maildigest.service
+
+[Install]
+WantedBy=basic.target
