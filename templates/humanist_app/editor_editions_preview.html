@@ -22,15 +22,15 @@ View/Edit Edition
     {% endif %}
 <section>
 
-    
+
     <form action="" method="post">
         {% csrf_token %}
         <input type="hidden" name="edition_id" value="{{edition.id}}">
         <h2>[Humanist] {{ current_volume }}.{{ current_issue }}: {% if edition.subject %}{{ edition.subject }}{% else %}Untitled Edition{% endif %}</h2>
-    
+
 
 <pre>
-{% include "includes/outgoing_template.html" with edition=edition %}
+{% include "includes/outgoing_template_preview.html" with edition=edition %}
 </pre>
 
         <div class="controls">

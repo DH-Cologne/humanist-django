@@ -320,7 +320,7 @@ class EditorEditionPreviewView(View):
                     edition.issue = Edition.get_current_issue()
                     edition.save()
 
-                    body = render_to_string('includes/outgoing_template.html',
+                    body = render_to_string('includes/outgoing_template_send.html',
                                             {'edition': edition})
 
                     subject = '[Humanist] {}.{}: {}'.format(

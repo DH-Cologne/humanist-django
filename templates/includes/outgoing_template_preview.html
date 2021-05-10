@@ -1,4 +1,3 @@
-{% for edition in editions %}
 
               Humanist Discussion Group, Vol. {{ edition.volume }}, No. {{ edition.issue }}.
         Department of Digital Humanities, University of Cologne
@@ -7,25 +6,21 @@
                 Submit to: humanist@dhhumanist.org
 
 {% if edition.data.emails|length > 1 %}{% for email in edition.data.emails %}
-    [{{ email.number }}]    From: {{ email.sender|safe }}
-           Subject: {{ email.message.subject|safe }} ({{ email.line_count}})
+    [{{ email.number }}]    From: {{ email.sender|escape }}
+           Subject: {{ email.message.subject|escape }} ({{ email.line_count}})
 {% endfor %}{% endif %}
 
 {% for email in edition.data.emails %}{% if edition.data.emails|length > 1 %}--[{{ email.number }}]------------------------------------------------------------------------{% endif %}
-        Date: {{ email.incoming.date|safe }}
-        From: {{ email.sender|safe }}
-        Subject: {{ email.message.subject|safe }}
+        Date: {{ email.incoming.date|escape }}
+        From: {{ email.sender|escape }}
+        Subject: {{ email.message.subject|escape }}
 
-{{ email.message.body|safe }}
+{{ email.message.body|escape }}
 {% if email.message.attachments %}
 
 Attachments:
 {% for att in email.message.attachments %}{{ att.original_filename }}: https://dhhumanist.org{{ att.url }}
 {% endfor %}
-{% endif %}
-{% endfor %}
-{% if not forloop.last %}
--------
 {% endif %}
 {% endfor %}
 _______________________________________________

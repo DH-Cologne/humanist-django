@@ -15,7 +15,7 @@
 				<h2>{% if edition.subject %}{{ edition.subject }}{% else %}Untitled Edition{% endif %}</h2>
 				<p>This edition was sent {{ edition.date_sent }}</p>
 				<pre>
-					{% include "includes/outgoing_template.html" with edition=edition %}
+					{% include "includes/outgoing_template_preview.html" with edition=edition %}
 				</pre>
 			</section>
 		{% else %}
