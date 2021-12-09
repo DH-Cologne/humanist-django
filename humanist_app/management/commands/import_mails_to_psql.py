@@ -7,6 +7,7 @@ import mailparser
 import email
 from datetime import datetime
 from bs4 import BeautifulSoup
+from base64 import b64decode
 
 
 class Command(BaseCommand):
@@ -47,11 +48,43 @@ class Command(BaseCommand):
                     continue
                 mail = IncomingEmail()
 
-                mail.body = "".join(parsed.text_plain).strip()
-                mail.body_html = "".join(parsed.text_html).strip()
-
                 mail.date = email.utils.parsedate_to_datetime(parsed.message.get('Date'))
-                mail.raw = parsed.body
+                mail.raw = parsed.message_as_string
+
+                # Finding text
+                plain_text = "".join(parsed.text_plain).strip()
+                html_text = "".join(parsed.text_html).strip()
+
+                has_plain_text = len(plain_text) > 0
+                has_html_text = len(html_text) > 0
+
+                if has_html_text and not has_plain_text:
+                    # Only html text content
+                    mail.body_html = html_text
+                    soup = BeautifulSoup(mail.body_html, features="html.parser")
+                    cleaned = "\n".join([text.strip() for text in soup.text.strip().split("\n")])
+                    mail.body = cleaned
+                elif has_plain_text and not has_html_text:
+                    # Only plain text content
+                    mail.body = plain_text
+                    mail.body_html = plain_text
+                elif has_html_text and has_plain_text:
+                    # Both plain text and html text content
+                    mail.body = plain_text
+                    mail.body_html = html_text
+                else:
+                    # No plain or html text content
+                    # Try base64 content, otherwise abort
+                    encoding_header = parsed.headers.get("Content-Transfer-Encoding", None)
+                    if encoding_header != "base64":
+                        continue
+                    base64content = parsed.message_as_string.split("\n\n").pop()
+                    decoded = b64decode(base64content).decode('utf-8')
+                    cleaned = "\n".join([text.strip() for text in decoded.split("\n")]).strip()
+                    if len(cleaned) == 0:
+                        continue
+                    mail.body = cleaned
+                    mail.body_html = cleaned
 
                 senders = []
                 for sender in parsed.from_:
@@ -62,11 +95,6 @@ class Command(BaseCommand):
                 mail.used = False
                 mail.deleted = False
                 mail.processed = True
-
-                if len(mail.body) == 0:
-                    soup = BeautifulSoup(mail.body_html, features="html.parser")
-                    cleaned = "\n".join([text.strip() for text in soup.text.strip().split("\n")])
-                    mail.body = cleaned
 
                 mail.save()
                 os.rename(file, "{}.used".format(file))
