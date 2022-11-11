@@ -13,6 +13,14 @@ Editor Interface
 {% endblock %}
 
 {% block main %}
+<script type="text/javascript">
+    function selectAll() {
+        document.querySelectorAll('input[name="email_id"]').forEach(function (el) {
+            return (el.checked = true);
+        });
+    }
+</script>
+
 <section class="editor-overview">
 
     <div class="editions">
@@ -68,7 +76,7 @@ Editor Interface
             <input type="submit" name="action" value="Create Edition">
             <input type="submit" name="action" value="Mark as Used"> 
             <input type="submit" name="action" value="Delete"> 
-           
+            <input type="button" name="btn-select-all" value="Select All" onclick="selectAll()">
         </div>
 
         <table>
@@ -105,6 +113,7 @@ Editor Interface
             <input type="submit" name="action" value="Create Edition">
             <input type="submit" name="action" value="Mark as Used"> 
             <input type="submit" name="action" value="Delete"> 
+            <input type="button" name="btn-select-all" value="Select All" onclick="selectAll()">
             {% if editions.drafts %}
             <p>Add selected emails to an existing draft:</p>
             <select name="edition_id">
