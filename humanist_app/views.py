@@ -826,7 +826,7 @@ class WebHomepageView(TemplateView):
 
         context['volumes'] = list(OrderedDict.fromkeys(list(
             Edition.objects.exclude(issue=None).order_by(
-                '-issue').values_list('volume', flat=True))))
+                'volume').values_list('volume', flat=True))))
 
         return render(request, self.template_name, context)
 
