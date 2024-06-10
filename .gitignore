@@ -68,3 +68,4 @@ postgres-data/
 venv/
 .env
 .python-version
+Archives/
