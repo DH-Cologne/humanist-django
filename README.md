@@ -5,8 +5,9 @@
 ~~This project uses the technologies outlined in our [Technology Stack](https://stackshare.io/kings-digital-lab/django) and is configured to use [Vagrant](https://www.vagrantup.com/) for local development and [Fabric](http://www.fabfile.org/) for deployment.~~
 
 ## Requirements
-* Docker
-* Docker Compose
+
+- Docker
+- Docker Compose
 
 ## Getting Started
 
@@ -16,16 +17,29 @@
 
 If we want Django to communicate with the host machine, e.g. for mails, we need to add the ip address of the local network interface in the docker compose configuration file.
 
-To list the ip addresses of all local network interfaces ```ip addr show```
+To list the ip addresses of all local network interfaces `ip addr show`
 
-Limit to a specific interface (in this example eth0) ```ip addr show eth0```
+Limit to a specific interface (in this example eth0) `ip addr show eth0`
+
+#### Environment variables
+
+Create a `.env` file in the root directory of the project to store environment-specific variables. Use the `.env.sample` file as a template. The `.env` file should look like this:
+
+```
+BASE_URL=https://miskatonic.hki.uni-koeln.de
+MAILHOST_IP=134.95.80.110
+LOCAL_MAILDIR=/home/humanist/Maildir
+```
+
+These variables will be used in the `docker-compose.yml` file to configure the application.
 
 #### Django config
 
-Some Django settings may have to be overridden. To do this, create a ```local.py``` in ```./humanist/settings/```
+Some Django settings may have to be overridden. To do this, create a `local.py` in `./humanist/settings/`
 
 Example configuration
-```./humanist/settings/local.py```
+`./humanist/settings/local.py`
+
 ```
 from .base import *  # noqa
 from .docker import * # noqa
@@ -44,30 +58,29 @@ Try to not override any of the docker related settings.
 
 ### Run docker compose
 
-Simply run ```docker-compose up```
+Simply run `docker-compose up`
 
 ### Create an admin account
 
 First, find the name of the docker compose container in the docker compose log.
-Should be something like ```humanist-django_web_1```
+Should be something like `humanist-django_web_1`
 
 Access the container console using:
-```docker exec -it humanist-django_web_1 /bin/bash```
+`docker exec -it humanist-django_web_1 /bin/bash`
 
 Inside of the container run the following script:
-```./manage.py createsuperuser```
+`./manage.py createsuperuser`
 
 ### Run management commands
 
 First, find the name of the docker compose container in the docker compose log.
-Should be something like ```humanist-django_web_1```
+Should be something like `humanist-django_web_1`
 
 Access the container console using:
-```docker exec -it humanist-django_web_1 /bin/bash```
+`docker exec -it humanist-django_web_1 /bin/bash`
 
 Inside of the container run the following script:
-```./manage.py command```
+`./manage.py command`
 
 To see a list of all management commands run the following:
-```./manage.py```
-
+`./manage.py`
