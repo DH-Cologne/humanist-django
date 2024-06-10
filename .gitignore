@@ -65,3 +65,6 @@ logs/
 static/
 private_data/
 postgres-data/
+venv/
+.env
+.python-version

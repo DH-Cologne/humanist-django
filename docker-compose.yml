@@ -36,12 +36,12 @@ services:
     volumes:
       - .:/humanist
       # Location of all incoming mails in Maildir format
-      - /home/humanist/Maildir:/maildir
+      - ${LOCAL_MAILDIR}:/maildir
     environment:
       # Should be the location of the volume above
       - HUMANIST_MAILDIR=/maildir
       # Public URL of the app
-      - BASE_URL=https://miskatonic.hki.uni-koeln.de
+      - BASE_URL=${BASE_URL}
     ports:
       - "127.0.0.1:10000:8080"
     depends_on:
@@ -49,5 +49,4 @@ services:
       - cache
       - search
     extra_hosts:
-      # IMPORTANT: Replace ip with ip address of local network interface
-      - "mailhost:134.95.80.110"
+      - "mailhost:${MAILHOST_IP}"
